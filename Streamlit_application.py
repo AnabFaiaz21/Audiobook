@@ -3,7 +3,11 @@ import streamlit as st
 import PyPDF2
 import os
 
-api_key = os.environ.get('API_KEY')
+# Fetch the service account key from GitHub Secrets
+google_application_credentials = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+
+# Set the environment variable
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = google_application_credentials
 
 def pdf_to_text(pdf_path):
     pdf_reader = PyPDF2.PdfReader(pdf_path)
@@ -18,7 +22,7 @@ def pdf_to_text(pdf_path):
     return extracted_text.strip()
 
 def text_to_audio(text, language='en', gender='neutral', save_path='output.mp3'):
-    client = texttospeech.TextToSpeechClient(credentials=api_key)
+    client = texttospeech.TextToSpeechClient()
 
 
     synthesis_input = texttospeech.SynthesisInput(text=text)

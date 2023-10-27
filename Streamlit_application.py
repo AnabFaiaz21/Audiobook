@@ -2,11 +2,8 @@ from google.cloud import texttospeech
 import streamlit as st
 import PyPDF2
 import os
-
-# Fetch the service account key from GitHub Secrets
-google_application_credentials = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-
-# Set the environment variable
+import json 
+google_application_credentials = st.secrets["GOOGLE_APPLICATION_CREDENTIALS"]
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = google_application_credentials
 
 def pdf_to_text(pdf_path):

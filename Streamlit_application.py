@@ -36,9 +36,9 @@ def text_to_audio(text, language='en', gender='neutral', save_path='output.mp3')
         out_file.write(response.audio_content)
 
     st.audio(save_path, format="audio/mp3")
-
-st.title("Audiobook Generator")
 st.set_option('browser.gatherUsageStats', False)
+st.title("Audiobook Generator")
+
 uploaded_file = st.file_uploader("Upload a PDF file", type="pdf")
 
 if uploaded_file is not None:

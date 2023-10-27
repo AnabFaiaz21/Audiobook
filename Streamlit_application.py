@@ -15,7 +15,8 @@ def pdf_to_text(pdf_path):
     return extracted_text.strip()
 
 def text_to_audio(text, language='en', gender='neutral', save_path='output.mp3'):
-    client = texttospeech.TextToSpeechClient()
+    client = texttospeech.TextToSpeechClient(credentials=API_KEY)
+
 
     synthesis_input = texttospeech.SynthesisInput(text=text)
 

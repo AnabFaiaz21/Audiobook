@@ -3,7 +3,6 @@ import streamlit as st
 import PyPDF2
 import os
 
-# Retrieve API key from GitHub secrets
 api_key = os.environ.get('API_KEY')
 
 def pdf_to_text(pdf_path):

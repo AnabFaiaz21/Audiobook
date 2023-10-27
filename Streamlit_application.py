@@ -4,7 +4,7 @@ import PyPDF2
 import os
 
 # Retrieve API key from GitHub secrets
-api_key = os.environ.get('API_KEY')
+api_key = os.environ.get('api_key')
 
 def pdf_to_text(pdf_path):
     pdf_reader = PyPDF2.PdfReader(pdf_path)

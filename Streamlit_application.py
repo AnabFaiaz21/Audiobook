@@ -1,6 +1,10 @@
 from google.cloud import texttospeech
 import streamlit as st
 import PyPDF2
+import os
+
+# Retrieve API key from GitHub secrets
+api_key = os.environ.get('YOUR_GITHUB_SECRET_NAME')
 
 def pdf_to_text(pdf_path):
     pdf_reader = PyPDF2.PdfReader(pdf_path)

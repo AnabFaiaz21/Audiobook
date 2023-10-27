@@ -1,0 +1,4 @@
+google-cloud-texttospeech==2.4.0
+gtts
+Streamlit
+PyPdf2

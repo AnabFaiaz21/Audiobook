@@ -4,7 +4,7 @@ import PyPDF2
 import os
 
 # Retrieve API key from GitHub secrets
-api_key = os.environ.get('api_key')
+api_key = os.environ.get('API_KEY')
 
 def pdf_to_text(pdf_path):
     pdf_reader = PyPDF2.PdfReader(pdf_path)
@@ -19,7 +19,7 @@ def pdf_to_text(pdf_path):
     return extracted_text.strip()
 
 def text_to_audio(text, language='en', gender='neutral', save_path='output.mp3'):
-    client = texttospeech.TextToSpeechClient()
+    client = texttospeech.TextToSpeechClient(credentials=api_key)
 
 
     synthesis_input = texttospeech.SynthesisInput(text=text)

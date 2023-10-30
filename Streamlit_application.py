@@ -3,8 +3,8 @@ import streamlit as st
 import PyPDF2
 import os
 import json 
-google_application_credentials = st.secrets["GOOGLE_APPLICATION_CREDENTIALS"]
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = google_application_credentials
+#google_application_credentials = st.secrets["GOOGLE_APPLICATION_CREDENTIALS"]
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = google_application_credentials
 
 def pdf_to_text(pdf_path):
     pdf_reader = PyPDF2.PdfReader(pdf_path)
@@ -15,7 +15,7 @@ def pdf_to_text(pdf_path):
         page = pdf_reader.pages[page_index]
         page_text = page.extract_text()
         extracted_text += page_text
-
+ 
     return extracted_text.strip()
 
 def text_to_audio(text, language='en', gender='neutral', save_path='output.mp3'):

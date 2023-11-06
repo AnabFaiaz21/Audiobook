@@ -1,4 +1,5 @@
-google-cloud-texttospeech==2.4.0
 gtts
 PyPDF2
 Streamlit
+gender-guesser
+googletrans

@@ -58,7 +58,7 @@ def text_to_audio(text, text_language='en', voice_language='en', voice='neutral'
     print(f'Audiobook saved as {save_path}')
 
 
-st.title("Multilingual Audiobook Generator")
+st.title("Multilingual Audio book Generator")
 
 uploaded_file = st.file_uploader("Upload a PDF file", type="pdf")
 

@@ -3,7 +3,6 @@ import PyPDF2
 from gtts import gTTS
 from translate import Translator
 
-
 def pdf_to_text(pdf_path):
     pdf_reader = PyPDF2.PdfReader(pdf_path)
     num_pages = len(pdf_reader.pages)
@@ -16,7 +15,6 @@ def pdf_to_text(pdf_path):
 
     return extracted_text.strip()
 
-
 def translate_text(text, source_language='en', target_language='en'):
     translator = Translator(from_lang=source_language, to_lang=target_language)
     try:
@@ -25,7 +23,6 @@ def translate_text(text, source_language='en', target_language='en'):
     except Exception as e:
         print(f"Translation error: {e}")
         return text
-
 
 def text_to_audio(text, text_language='en', voice_language='en', save_path='output.mp3'):
     if not text:
@@ -36,13 +33,13 @@ def text_to_audio(text, text_language='en', voice_language='en', save_path='outp
     if text_language != voice_language:
         text = translate_text(text, source_language=text_language, target_language=voice_language)
 
-    tts = gTTS(text=text, lang=voice_language, slow=False)
+    # Use language code for male/female voices (e.g., 'en-US-male' or 'en-US-female')
+    tts = gTTS(text=text, lang=f'{voice_language}-male', slow=False)
     tts.save(save_path)
     st.audio(save_path, format='audio/mp3')
     print(f'Audiobook saved as {save_path}')
 
-
-st.title("Multilingual Audio book Generator")
+st.title("Multilingual Audiobook Generator")
 
 uploaded_file = st.file_uploader("Upload a PDF file", type="pdf")
 
@@ -60,4 +57,4 @@ if uploaded_file is not None:
     voice = st.selectbox("Select Voice", voice_options)
 
     # Convert text to audio and display
-    text_to_audio(extracted_text, text_language=text_language, voice_language=voice)
+    text_to_audio(extracted_text, text_language=text_language, voice_language=text_language, save_path='output.mp3')
